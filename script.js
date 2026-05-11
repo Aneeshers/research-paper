@@ -6,10 +6,7 @@
 
   const $ = (id) => document.getElementById(id);
 
-  const nav = $("nav");
-  const toc = $("toc");
   const hero = $("hero");
-  const metaGrid = $("meta-grid");
   const sectionsRoot = $("sections");
   const footer = $("footer");
 
@@ -27,52 +24,41 @@
   }
 
   function authorMarkup(author) {
-    return `
-      <div class="author">
-        <span class="author-name">${author.name}</span>
-        <span class="author-affiliation">${author.affiliation}</span>
-      </div>
-    `;
+    return author.href
+      ? `<a href="${author.href}">${author.name}</a>`
+      : author.name;
   }
 
   function linkMarkup(link) {
-    return `<a class="paper-link" href="${link.href}">${link.label}</a>`;
+    return `
+      <a class="paper-link" href="${link.href}" aria-label="${link.label}" title="${link.label}">
+        <img class="paper-link-icon" src="${link.icon}" alt="" aria-hidden="true" />
+        <span>${link.label}</span>
+      </a>
+    `;
   }
 
   function renderHero() {
     hero.innerHTML = `
       <div class="hero-copy">
-        <p class="status">${data.paper.status}</p>
         <h1>${data.paper.title}</h1>
-        <p class="subtitle">${data.paper.subtitle}</p>
-        <p class="abstract-label">Abstract</p>
-        <p class="abstract">${data.paper.abstract}</p>
-        <div class="link-row">
+        <p class="authors-line">${data.paper.authors.map(authorMarkup).join(", ")}</p>
+        <div class="hero-links">
           ${data.paper.links.map(linkMarkup).join("")}
         </div>
-      </div>
-      <div class="hero-side">
-        <div class="authors-card">
-          <p class="card-label">Authors</p>
-          <div class="authors-list">
-            ${data.paper.authors.map(authorMarkup).join("")}
-          </div>
-        </div>
+        ${data.paper.notice ? `<p class="notice">${data.paper.notice}</p>` : ""}
+        ${data.paper.noticeSecondary ? `<p class="notice secondary">${data.paper.noticeSecondary}</p>` : ""}
+        <p class="abstract">${data.paper.abstract}</p>
       </div>
     `;
   }
 
-  function renderHighlights() {
-    metaGrid.innerHTML = data.highlights
-      .map(
-        (item) => `
-          <article class="metric-card">
-            <p class="metric-value">${item.value}</p>
-            <p class="metric-label">${item.label}</p>
-          </article>
-        `
-      )
-      .join("");
+  function renderHighlight() {
+    if (!data.highlight) {
+      return "";
+    }
+
+    return `<p class="highlight">${data.highlight}</p>`;
   }
 
   function renderBlock(block) {
@@ -84,21 +70,29 @@
       `;
     }
 
-    if (block.type === "list") {
+    if (block.type === "bullet") {
       return `
-        <div class="block list-block">
-          ${block.title ? `<p class="block-title">${block.title}</p>` : ""}
-          <ul>
+        <div class="block bullet-block">
+          <ul class="note-list">
             ${block.items.map((item) => `<li>${item}</li>`).join("")}
           </ul>
         </div>
       `;
     }
 
+    if (block.type === "callout") {
+      return `<div class="block callout">${block.html}</div>`;
+    }
+
+    if (block.type === "code") {
+      return `
+        <pre class="block code-block"><code>${block.code}</code></pre>
+      `;
+    }
+
     if (block.type === "equation") {
       return `
         <div class="block equation-block">
-          ${block.title ? `<p class="block-title">${block.title}</p>` : ""}
           <div class="equation-display">$$${block.tex}$$</div>
           ${block.note ? `<p class="equation-note">${block.note}</p>` : ""}
         </div>
@@ -135,39 +129,23 @@
   }
 
   function renderSections() {
-    nav.innerHTML = data.sections
-      .map((section) => `<a href="#${section.id}">${section.label}</a>`)
-      .join("");
-
-    toc.innerHTML = data.sections
-      .map(
-        (section, index) => `
-          <a class="toc-link" href="#${section.id}">
-            <span class="toc-index">${String(index + 1).padStart(2, "0")}</span>
-            <span>${section.label}</span>
-          </a>
-        `
-      )
-      .join("");
-
-    sectionsRoot.innerHTML = data.sections
-      .map(
-        (section, index) => `
-          <section class="paper-section" id="${section.id}">
-            <div class="section-heading">
-              <p class="section-index">${String(index + 1).padStart(2, "0")}</p>
-              <div>
-                <p class="section-label">${section.label}</p>
+    sectionsRoot.innerHTML = `
+      <div class="highlight-wrap">${renderHighlight()}</div>
+      ${data.sections
+        .map(
+          (section) => `
+            <section class="paper-section" id="${section.id}">
+              <div class="section-heading">
                 <h2>${section.title}</h2>
               </div>
-            </div>
-            <div class="section-body">
-              ${section.blocks.map(renderBlock).join("")}
-            </div>
-          </section>
-        `
-      )
-      .join("");
+              <div class="section-body">
+                ${section.blocks.map(renderBlock).join("")}
+              </div>
+            </section>
+          `
+        )
+        .join("")}
+    `;
   }
 
   function renderFooter() {
@@ -195,7 +173,6 @@
 
   updateMetadata();
   renderHero();
-  renderHighlights();
   renderSections();
   renderFooter();
   renderMath();
