@@ -29,6 +29,76 @@
       : author.name;
   }
 
+  function escapeHTML(text) {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function highlightPython(code) {
+    const lines = code.split("\n");
+    const keywords = new Set([
+      "from",
+      "import",
+      "as",
+      "def",
+      "class",
+      "return",
+      "for",
+      "in",
+      "if",
+      "else",
+      "elif",
+      "while",
+      "with",
+      "try",
+      "except",
+      "finally",
+      "raise",
+      "pass",
+      "break",
+      "continue",
+      "True",
+      "False",
+      "None",
+      "and",
+      "or",
+      "not",
+    ]);
+
+    return lines
+      .map((line) => {
+        const commentIndex = line.indexOf("#");
+        let comment = "";
+        let body = line;
+        if (commentIndex >= 0) {
+          comment = line.slice(commentIndex);
+          body = line.slice(0, commentIndex);
+        }
+
+        let html = escapeHTML(body);
+        html = html.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, (match) =>
+          keywords.has(match) ? `<span class="code-keyword">${match}</span>` : match
+        );
+        html = html.replace(
+          /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/g,
+          '<span class="code-string">$1</span>'
+        );
+        html = html.replace(
+          /\b(\d+(?:\.\d+)?)\b/g,
+          '<span class="code-number">$1</span>'
+        );
+        if (comment) {
+          html += `<span class="code-comment">${escapeHTML(comment)}</span>`;
+        }
+        return html || "&nbsp;";
+      })
+      .join("\n");
+  }
+
   function linkMarkup(link) {
     return `
       <a class="paper-link" href="${link.href}" aria-label="${link.label}" title="${link.label}">
@@ -85,8 +155,10 @@
     }
 
     if (block.type === "code") {
+      const language = block.language || "python";
+      const highlighted = language === "python" ? highlightPython(block.code) : escapeHTML(block.code);
       return `
-        <pre class="block code-block"><code>${block.code}</code></pre>
+        <pre class="block code-block language-${language}"><code>${highlighted}</code></pre>
       `;
     }
 

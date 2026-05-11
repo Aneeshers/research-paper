@@ -54,7 +54,10 @@ window.PAPER_SITE = {
         },
         {
           type: "code",
-          code: String.raw`optimizer = start_template(Adam)(model.parameters(), lr=1e-3)
+          language: "python",
+          code: String.raw`from torch.optim import Adam
+
+optimizer = start_trac(Adam)(model.parameters(), lr=1e-3)
 optimizer.zero_grad()
 optimizer.step()`,
         },

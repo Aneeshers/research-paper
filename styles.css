@@ -5,8 +5,8 @@
   --line: #d9dee6;
   --accent: #1b6fe0;
   --accent-strong: #c92d4b;
-  --page-width: min(920px, calc(100vw - 28px));
-  --content-width: 720px;
+  --page-width: min(1060px, calc(100vw - 28px));
+  --content-width: 840px;
 }
 
 @font-face {
@@ -83,9 +83,9 @@ img {
 }
 
 h1 {
-  max-width: 18ch;
+  max-width: 24ch;
   margin: 0;
-  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  font-size: clamp(2rem, 4vw, 3.1rem);
   letter-spacing: -0.02em;
 }
 
@@ -243,13 +243,33 @@ h2 {
 }
 
 .code-block {
-  padding: 0;
-  border: 0;
-  background: transparent;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: #f8fafc;
   overflow-x: auto;
-  white-space: pre-wrap;
+  white-space: pre;
   line-height: 1.55;
   font-size: 0.9rem;
+}
+
+.code-block code {
+  font-family: "Berkeley Mono", monospace;
+}
+
+.code-keyword {
+  color: #1658c7;
+}
+
+.code-string {
+  color: #9b3f1f;
+}
+
+.code-number {
+  color: #b14c00;
+}
+
+.code-comment {
+  color: #7c7f87;
 }
 
 .equation-display {
