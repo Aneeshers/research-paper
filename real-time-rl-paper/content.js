@@ -14,7 +14,7 @@ window.PAPER_SITE = {
       { name: "Joao F. Henriques", href: "https://joao.science" },
       { name: "Jakob Nicolaus Foerster", href: "https://www.jakobfoerster.com" },
     ],
-    authorsNote: "# indicates equal contribution",
+    authorsNote: "* indicates equal contribution",
     links: [
       { label: "GitHub", href: "https://github.com/Aneeshers/Real-time-RL", icon: "assets/icons/github.png" },
       { label: "Paper", href: "https://openreview.net/attachment?id=co1yOG9PHM&name=pdf", icon: "assets/icons/arxiv-square.svg" },
