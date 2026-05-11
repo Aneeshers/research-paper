@@ -4,9 +4,10 @@ Reusable static template for technical paper websites.
 
 ## Design goals
 
-- Berkeley Mono for titles, labels, and metadata
+- Berkeley Mono everywhere, including body copy and code
 - White background, minimal borders, no gradients
-- Figure-first layout
+- Centered paper-style hero with compact link pills
+- Figure-first layout with math support
 - KaTeX support for inline and display math
 - No framework or build step
 - Works on GitHub Pages
@@ -15,7 +16,7 @@ Reusable static template for technical paper websites.
 
 - `index.html`: page shell
 - `content.js`: all paper-specific content lives here
-- `script.js`: renderer for sections, links, TOC, and metadata
+- `script.js`: renderer for the hero, sections, links, and metadata
 - `styles.css`: minimal research-oriented styling
 - `assets/figures/`: replace placeholder figures with your own
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
@@ -41,4 +42,4 @@ Then open `http://localhost:8000`.
 - Inline math works with `$...$`.
 - Display math works with `$$...$$`.
 - Content strings are trusted HTML, so you can use tags like `<code>` and `<em>` inside `content.js`.
-- If you want a different body font later, keep Berkeley Mono for the structural UI and swap only the paragraph font.
+- If you want a different body font later, change the `@font-face` and `body` font stack in `styles.css`.

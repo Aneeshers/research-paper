@@ -1,95 +1,72 @@
 window.PAPER_SITE = {
   meta: {
-    title: "Project Title",
+    title: "Paper Template",
     description:
-      "A reusable static template for technical paper websites with clean typography, KaTeX support, and a research-code aesthetic.",
+      "A minimal paper-style project page template with Berkeley Mono typography and flattened sections.",
     ogImage: "assets/figures/placeholder-wide.svg",
   },
   paper: {
-    status: "Conference 20XX submission",
-    title: "Project Title: A Clean, Technical Paper Page Template",
-    subtitle:
-      "A reusable template for research project pages with minimal styling, math support, and figure-first storytelling.",
-    abstract:
-      "This template is designed for papers that benefit from a simple, technical presentation. It avoids gradients, oversized marketing blocks, and ornamental styling. Instead, it emphasizes equations, figures, concise prose, and a layout that feels closer to a research artifact than a product page.",
+    title: "Paper Template",
     authors: [
-      { name: "First Author", affiliation: "Institution A" },
-      { name: "Second Author", affiliation: "Institution B" },
-      { name: "Third Author", affiliation: "Institution C" },
+      { name: "First Author", href: "#" },
+      { name: "Second Author", href: "#" },
+      { name: "Third Author", href: "#" },
     ],
     links: [
-      { label: "Paper", href: "#" },
-      { label: "Code", href: "#" },
-      { label: "arXiv", href: "#" },
+      { label: "GitHub", href: "#", icon: "assets/icons/github.png" },
+      { label: "arXiv", href: "#", icon: "assets/icons/arxiv-square.svg" },
+      { label: "PDF", href: "#", icon: "assets/icons/pdf.png" },
     ],
+    abstract:
+      "A minimal static project page for technical papers. The layout stays flat, the typography stays monochrome, and the content is meant to read like a finished research artifact rather than a product site.",
   },
-  highlights: [
-    { value: "1", label: "single content file to edit for a new paper" },
-    { value: "0", label: "gradients, shadows, or decorative hero effects" },
-    { value: "\\(\\LaTeX\\)", label: "math rendering via KaTeX" },
-    { value: "HTML", label: "static output deployable on GitHub Pages" },
-  ],
+  highlight:
+    "Edit `content.js` to swap the title, authors, links, and sections. The whole page stays flat, with Berkeley Mono across the UI and a single highlighted paragraph for emphasis.",
   sections: [
     {
       id: "overview",
-      label: "Overview",
-      title: "What this template is for",
+      title: "Overview",
       blocks: [
         {
           type: "prose",
           paragraphs: [
-            "Use this template for project pages that should feel like a paper companion rather than a promotional landing page. The default layout is narrow, white, typographic, and figure-focused.",
-            "Most customization happens in <code>content.js</code>. Replace the title, abstract, authors, links, and sections, then swap in your own figures under <code>assets/figures/</code>.",
-          ],
-        },
-        {
-          type: "list",
-          title: "Default design constraints",
-          items: [
-            "White background with thin gray rules and restrained accents.",
-            "Berkeley Mono for titles, labels, and technical metadata.",
-            "IBM Plex Sans for body copy and readable explanatory text.",
-            "KaTeX support for inline math like $V^\\pi(s)$ and display math.",
+            "This template keeps the first screen as quiet as possible: author links, small icon buttons, a short abstract, then the rest of the content in a single column.",
+            "The goal is to stay close to a clean paper companion while keeping the page easy to reuse for different projects.",
           ],
         },
       ],
     },
     {
       id: "method",
-      label: "Method",
-      title: "A math-first section can mix prose, equations, and diagrams",
+      title: "Method",
       blocks: [
         {
           type: "prose",
           paragraphs: [
-            "This section demonstrates the intended tone. You can explain the core mechanism, add a compact equation card, and place a figure nearby without needing a build step or framework.",
+            "Use plain prose, equations, and figures without boxed containers or decorative surfaces. The content should do the work, not the chrome around it.",
           ],
         },
         {
           type: "equation",
-          title: "Example objective",
-          tex: String.raw`\pi^\star = \arg\max_{\pi \in \Pi} \mathbb{E}_{\tau \sim p_\pi(\tau)} \left[\sum_{t=0}^{T} r_t \right]`,
-          note:
-            "Equation blocks render with KaTeX automatically. Inline math also works in paragraph text.",
+          tex: String.raw`\theta^\star = \arg\max_{\theta} \mathbb{E}\left[\sum_{t=0}^{T} r_t\right]`,
+          note: "Inline and display math still render through KaTeX.",
         },
         {
-          type: "figure",
-          src: "assets/figures/placeholder-diagram.svg",
-          alt: "Placeholder diagram",
-          caption:
-            "Replace this with your method figure, system diagram, or algorithm overview.",
+          type: "code",
+          code: String.raw`optimizer = start_template(Adam)(model.parameters(), lr=1e-3)
+optimizer.zero_grad()
+optimizer.step()`,
         },
       ],
     },
     {
       id: "results",
-      label: "Results",
-      title: "Figures should lead the page",
+      title: "Results",
       blocks: [
         {
           type: "prose",
           paragraphs: [
-            "The default result layout favors large figures and short interpretation. For most papers, that is a better ratio than dense marketing copy.",
+            "Figures should sit directly in the flow. Keep them simple, wide, and unframed unless the image itself needs a boundary.",
           ],
         },
         {
@@ -98,28 +75,28 @@ window.PAPER_SITE = {
           items: [
             {
               src: "assets/figures/placeholder-results.svg",
-              alt: "Placeholder results chart",
-              caption: "Main quantitative result.",
+              alt: "Placeholder results figure",
+              caption: "Main quantitative result or comparison panel.",
             },
             {
               src: "assets/figures/placeholder-square.svg",
               alt: "Placeholder ablation figure",
-              caption: "Ablation, interpretability, or failure case.",
+              caption: "Ablation, failure case, or supporting visualization.",
             },
           ],
         },
       ],
     },
     {
-      id: "discussion",
-      label: "Discussion",
-      title: "Keep the ending concise and technical",
+      id: "notes",
+      title: "Notes",
       blocks: [
         {
-          type: "prose",
-          paragraphs: [
-            "A clean project page usually ends with a short takeaway, limitations, or deployment note. It does not need a second hero section or a large call-to-action.",
-            "If you want appendix material, add another section with extra figures instead of forcing everything into the top of the page.",
+          type: "bullet",
+          items: [
+            "Replace the author links in `content.js` with real profiles.",
+            "Swap the icon-button targets for GitHub, arXiv, and PDF URLs.",
+            "Replace the placeholder figures with your project assets.",
           ],
         },
       ],
@@ -127,6 +104,6 @@ window.PAPER_SITE = {
   ],
   footer: {
     left: "Reusable static paper-site template.",
-    right: "Edit content in <code>content.js</code> and replace assets in <code>assets/figures/</code>.",
+    right: "Edit `content.js` and replace the placeholder figures in `assets/figures/`.",
   },
 };
