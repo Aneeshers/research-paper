@@ -39,7 +39,6 @@
   }
 
   function highlightPython(code) {
-    const lines = code.split("\n");
     const keywords = new Set([
       "from",
       "import",
@@ -68,32 +67,36 @@
       "or",
       "not",
     ]);
+    const tokenPattern =
+      /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|\b\d+(?:\.\d+)?\b|\b[A-Za-z_][A-Za-z0-9_]*\b|\s+|.)/g;
 
-    return lines
+    return code
+      .split("\n")
       .map((line) => {
         const commentIndex = line.indexOf("#");
-        let comment = "";
-        let body = line;
-        if (commentIndex >= 0) {
-          comment = line.slice(commentIndex);
-          body = line.slice(0, commentIndex);
-        }
+        const body = commentIndex >= 0 ? line.slice(0, commentIndex) : line;
+        const comment = commentIndex >= 0 ? line.slice(commentIndex) : "";
 
-        let html = escapeHTML(body);
-        html = html.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, (match) =>
-          keywords.has(match) ? `<span class="code-keyword">${match}</span>` : match
-        );
-        html = html.replace(
-          /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/g,
-          '<span class="code-string">$1</span>'
-        );
-        html = html.replace(
-          /\b(\d+(?:\.\d+)?)\b/g,
-          '<span class="code-number">$1</span>'
-        );
+        let html = "";
+        body.replace(tokenPattern, (token) => {
+          if (/^\s+$/.test(token)) {
+            html += token;
+          } else if (/^'(?:[^'\\]|\\.)*'$|^"(?:[^"\\]|\\.)*"$/.test(token)) {
+            html += `<span class="code-string">${escapeHTML(token)}</span>`;
+          } else if (/^\d+(?:\.\d+)?$/.test(token)) {
+            html += `<span class="code-number">${token}</span>`;
+          } else if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(token) && keywords.has(token)) {
+            html += `<span class="code-keyword">${token}</span>`;
+          } else {
+            html += escapeHTML(token);
+          }
+          return token;
+        });
+
         if (comment) {
           html += `<span class="code-comment">${escapeHTML(comment)}</span>`;
         }
+
         return html || "&nbsp;";
       })
       .join("\n");
