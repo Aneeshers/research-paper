@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none">
+  <rect width="1200" height="760" fill="white"/>
+  <rect x="52" y="52" width="1096" height="656" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="84" y="118" fill="#0F172A" font-family="monospace" font-size="34">Method Diagram Placeholder</text>
+  <rect x="120" y="238" width="220" height="120" stroke="#94A3B8" stroke-width="3"/>
+  <rect x="490" y="238" width="220" height="120" stroke="#94A3B8" stroke-width="3"/>
+  <rect x="860" y="238" width="220" height="120" stroke="#94A3B8" stroke-width="3"/>
+  <text x="182" y="308" fill="#0F172A" font-family="monospace" font-size="26">Input</text>
+  <text x="530" y="308" fill="#0F172A" font-family="monospace" font-size="26">Model</text>
+  <text x="906" y="308" fill="#0F172A" font-family="monospace" font-size="26">Output</text>
+  <line x1="340" y1="298" x2="490" y2="298" stroke="#2563EB" stroke-width="6"/>
+  <line x1="710" y1="298" x2="860" y2="298" stroke="#2563EB" stroke-width="6"/>
+  <path d="M475 545H725" stroke="#94A3B8" stroke-width="3"/>
+  <path d="M600 440V650" stroke="#94A3B8" stroke-width="3"/>
+  <path d="M410 545C410 450 790 450 790 545C790 640 410 640 410 545Z" stroke="#2563EB" stroke-width="4"/>
+  <text x="514" y="552" fill="#2563EB" font-family="monospace" font-size="24">Optimization loop</text>
+</svg>

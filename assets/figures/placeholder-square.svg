@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="white"/>
+  <rect x="50" y="50" width="700" height="700" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="84" y="128" fill="#0F172A" font-family="monospace" font-size="30">Square Figure Placeholder</text>
+  <circle cx="400" cy="420" r="220" stroke="#2563EB" stroke-width="6"/>
+  <path d="M246 512L338 392L432 460L560 312" stroke="#0F172A" stroke-width="7" fill="none"/>
+  <circle cx="246" cy="512" r="8" fill="#0F172A"/>
+  <circle cx="338" cy="392" r="8" fill="#0F172A"/>
+  <circle cx="432" cy="460" r="8" fill="#0F172A"/>
+  <circle cx="560" cy="312" r="8" fill="#0F172A"/>
+</svg>

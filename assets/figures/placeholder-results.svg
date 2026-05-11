@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none">
+  <rect width="1200" height="760" fill="white"/>
+  <rect x="52" y="52" width="1096" height="656" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="88" y="118" fill="#0F172A" font-family="monospace" font-size="34">Results Placeholder</text>
+  <line x1="120" y1="620" x2="1080" y2="620" stroke="#94A3B8" stroke-width="3"/>
+  <line x1="120" y1="620" x2="120" y2="190" stroke="#94A3B8" stroke-width="3"/>
+  <rect x="190" y="460" width="110" height="160" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+  <rect x="360" y="390" width="110" height="230" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+  <rect x="530" y="320" width="110" height="300" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+  <rect x="700" y="260" width="110" height="360" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+  <rect x="870" y="214" width="110" height="406" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+  <text x="205" y="658" fill="#64748B" font-family="monospace" font-size="22">A</text>
+  <text x="375" y="658" fill="#64748B" font-family="monospace" font-size="22">B</text>
+  <text x="545" y="658" fill="#64748B" font-family="monospace" font-size="22">C</text>
+  <text x="715" y="658" fill="#64748B" font-family="monospace" font-size="22">D</text>
+  <text x="885" y="658" fill="#64748B" font-family="monospace" font-size="22">Ours</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="840" viewBox="0 0 1600 840" fill="none">
+  <rect width="1600" height="840" fill="white"/>
+  <rect x="72" y="72" width="1456" height="696" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="100" y="144" fill="#0F172A" font-family="monospace" font-size="42">Main Figure Placeholder</text>
+  <text x="100" y="196" fill="#64748B" font-family="monospace" font-size="24">Replace with your lead result or overview figure.</text>
+  <line x1="120" y1="672" x2="1480" y2="672" stroke="#94A3B8" stroke-width="3"/>
+  <line x1="120" y1="672" x2="120" y2="250" stroke="#94A3B8" stroke-width="3"/>
+  <polyline points="150,620 360,578 570,492 780,514 990,420 1200,336 1410,240" stroke="#2563EB" stroke-width="8" fill="none"/>
+  <circle cx="150" cy="620" r="8" fill="#2563EB"/>
+  <circle cx="360" cy="578" r="8" fill="#2563EB"/>
+  <circle cx="570" cy="492" r="8" fill="#2563EB"/>
+  <circle cx="780" cy="514" r="8" fill="#2563EB"/>
+  <circle cx="990" cy="420" r="8" fill="#2563EB"/>
+  <circle cx="1200" cy="336" r="8" fill="#2563EB"/>
+  <circle cx="1410" cy="240" r="8" fill="#2563EB"/>
+</svg>
