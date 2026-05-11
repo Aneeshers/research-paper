@@ -15,7 +15,8 @@ window.PAPER_SITE = {
     links: [
       { label: "GitHub", href: "#", icon: "assets/icons/github.png" },
       { label: "arXiv", href: "#", icon: "assets/icons/arxiv-square.svg" },
-      { label: "PDF", href: "#", icon: "assets/icons/pdf.png" },
+      { label: "Colab", href: "#", icon: "assets/icons/colab.png" },
+      { label: "Pypi", href: "#", icon: "assets/icons/python.png" },
     ],
     abstract:
       "A minimal static project page for technical papers. The layout stays flat, the typography stays monochrome, and the content is meant to read like a finished research artifact rather than a product site.",

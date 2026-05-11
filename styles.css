@@ -96,6 +96,7 @@ h1 {
 }
 
 .authors-line a {
+  color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
@@ -155,6 +156,16 @@ h1 {
   background: #fff5cc;
   color: var(--ink);
   line-height: 1.7;
+}
+
+.notice {
+  margin: 0;
+  color: var(--accent);
+  line-height: 1.7;
+}
+
+.notice.secondary {
+  color: var(--muted);
 }
 
 .paper-section {
@@ -219,7 +230,16 @@ h2 {
 }
 
 .callout {
+  padding: 12px 14px;
   color: var(--muted);
+}
+
+.callout.blue {
+  background: #eef5ff;
+}
+
+.callout.yellow {
+  background: #fff5cc;
 }
 
 .code-block {

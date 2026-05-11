@@ -46,6 +46,8 @@
         <div class="hero-links">
           ${data.paper.links.map(linkMarkup).join("")}
         </div>
+        ${data.paper.notice ? `<p class="notice">${data.paper.notice}</p>` : ""}
+        ${data.paper.noticeSecondary ? `<p class="notice secondary">${data.paper.noticeSecondary}</p>` : ""}
         <p class="abstract">${data.paper.abstract}</p>
       </div>
     `;
