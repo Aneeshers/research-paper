@@ -77,8 +77,10 @@
         const body = commentIndex >= 0 ? line.slice(0, commentIndex) : line;
         const comment = commentIndex >= 0 ? line.slice(commentIndex) : "";
 
+        const tokens = body.match(tokenPattern) || [];
         let html = "";
-        body.replace(tokenPattern, (token) => {
+        for (let i = 0; i < tokens.length; i += 1) {
+          const token = tokens[i];
           if (/^\s+$/.test(token)) {
             html += token;
           } else if (/^'(?:[^'\\]|\\.)*'$|^"(?:[^"\\]|\\.)*"$/.test(token)) {
@@ -87,11 +89,15 @@
             html += `<span class="code-number">${token}</span>`;
           } else if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(token) && keywords.has(token)) {
             html += `<span class="code-keyword">${token}</span>`;
+          } else if (
+            /^[A-Za-z_][A-Za-z0-9_]*$/.test(token) &&
+            tokens[i + 1] === "("
+          ) {
+            html += `<span class="code-func">${token}</span>`;
           } else {
             html += escapeHTML(token);
           }
-          return token;
-        });
+        }
 
         if (comment) {
           html += `<span class="code-comment">${escapeHTML(comment)}</span>`;
@@ -121,7 +127,9 @@
         </div>
         ${data.paper.notice ? `<p class="notice">${data.paper.notice}</p>` : ""}
         ${data.paper.noticeSecondary ? `<p class="notice secondary">${data.paper.noticeSecondary}</p>` : ""}
-        <p class="abstract">${data.paper.abstract}</p>
+        <div class="abstract-box">
+          <p class="abstract">${data.paper.abstract}</p>
+        </div>
       </div>
     `;
   }
