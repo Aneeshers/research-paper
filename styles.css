@@ -146,6 +146,20 @@ h1 {
   max-width: 64ch;
 }
 
+.abstract-credit {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.abstract-credit:hover,
+.abstract-credit:focus-visible {
+  color: var(--ink);
+}
+
+.abstract-credit-line {
+  color: var(--accent-strong);
+}
+
 .abstract-box {
   padding: 12px 14px;
   background: #eef5ff;
@@ -166,11 +180,18 @@ h1 {
 
 .notice {
   margin: 0;
-  color: var(--accent);
+  max-width: 64ch;
+  padding: 10px 14px;
+  background: #fff5cc;
+  border: 1px solid #f0ddb0;
+  color: var(--ink);
   line-height: 1.7;
+  text-align: left;
 }
 
 .notice.secondary {
+  background: #f8fafc;
+  border-color: var(--line);
   color: var(--muted);
 }
 
@@ -256,10 +277,11 @@ h2 {
   white-space: pre;
   line-height: 1.55;
   font-size: 0.9rem;
+  font-family: "Berkeley Mono", monospace;
 }
 
 .code-block code {
-  font-family: "Berkeley Mono", monospace;
+  font-family: inherit;
 }
 
 .code-keyword {

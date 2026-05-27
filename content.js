@@ -19,10 +19,8 @@ window.PAPER_SITE = {
       { label: "Pypi", href: "#", icon: "assets/icons/python.png" },
     ],
     abstract:
-      "A minimal static project page for technical papers. The layout stays flat, the typography stays monochrome, and the content is meant to read like a finished research artifact rather than a product site.",
+      'A minimal static project page for technical papers. The layout stays flat, the typography stays monochrome, and the content is meant to read like a finished research artifact rather than a product site. <span class="abstract-credit-line">If you find it useful, I’d be grateful for a small credit or link back to <a class="abstract-credit" href="https://aneeshers.github.io" target="_blank" rel="noopener noreferrer">Aneesh!</a>.</span>',
   },
-  highlight:
-    "Edit `content.js` to swap the title, authors, links, and sections. The whole page stays flat, with Berkeley Mono across the UI and a single highlighted paragraph for emphasis.",
   sections: [
     {
       id: "overview",

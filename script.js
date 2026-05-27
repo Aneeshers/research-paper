@@ -120,12 +120,12 @@
   function renderHero() {
     hero.innerHTML = `
       <div class="hero-copy">
+        ${data.paper.notice ? `<p class="notice">${data.paper.notice}</p>` : ""}
         <h1>${data.paper.title}</h1>
         <p class="authors-line">${data.paper.authors.map(authorMarkup).join(", ")}</p>
         <div class="hero-links">
           ${data.paper.links.map(linkMarkup).join("")}
         </div>
-        ${data.paper.notice ? `<p class="notice">${data.paper.notice}</p>` : ""}
         ${data.paper.noticeSecondary ? `<p class="notice secondary">${data.paper.noticeSecondary}</p>` : ""}
         <div class="abstract-box">
           <p class="abstract">${data.paper.abstract}</p>
@@ -212,8 +212,9 @@
   }
 
   function renderSections() {
+    const highlight = renderHighlight();
     sectionsRoot.innerHTML = `
-      <div class="highlight-wrap">${renderHighlight()}</div>
+      ${highlight ? `<div class="highlight-wrap">${highlight}</div>` : ""}
       ${data.sections
         .map(
           (section) => `
